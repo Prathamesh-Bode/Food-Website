@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HungerMeal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">🍽️ HungerMeal</div>
+        <ul class="navbar-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#order" id="navbarOrderLink">Order</a></li>
+            <li><a href="#admin" id="adminLink">Admin</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#cart" id="cartLink">Cart</a></li>
+        </ul>
+    </nav>
+    <div class="container" id="home">
+        <img class="chef-center" src="./image/chef-baker-cartoon-cook-giving-600nw-2595108147-removebg-preview.png" alt="Chef" />
+        <div class="list" style="--quantity: 10">
+            <div class="item" style="--position: 1"> <img src="./image/20180511-salt-lassi-0061-500x500.jpg" alt="Lassi"></div>
+            <div class="item" style="--position: 2"> <img src="./image/Chicken-Tikka-Masala_0-SQ.webp" alt="Chicken-Tikka-Masala"></div>
+            <div class="item" style="--position: 3"> <img src="./image/Chole-Bhature.jpg" alt="Chole-Bhature"></div>
+            <div class="item" style="--position: 4"> <img src="./image/ilish-bhaji-panta-bengali-new-600nw-2209296897.jpg" alt="Fish Fry"></div>
+            <div class="item" style="--position: 5"> <img src="./image/images.jpeg" alt="Iddli"></div>
+            <div class="item" style="--position: 6"> <img src="./image/images.webp" alt="ButterChicken"></div>
+            <div class="item" style="--position: 7"> <img src="./image/Medu_Vadas.JPG" alt="Medu_Vadas"></div>
+            <div class="item" style="--position: 8"> <img src="./image/Mutton-Masala.jpg" alt="Mutton-Masala"></div>
+            <div class="item" style="--position: 9"> <img src="./image/bread-rasmalai-tweaked-version-traditional-260nw-2212485393.webp" alt="bread-rasmalai"></div>
+            <div class="item" style="--position: 10"> <img src="./image/triangular-masala-dosa-feature.jpeg" alt="dosa"></div>
+        </div>
+        <button class="order-btn" id="orderBtn">Order Now</button>
+    </div>
+    <section id="menu" class="menu-section">
+      <h2>Menu</h2>
+      <div class="menu-category">
+        <h3>South Indian</h3>
+        <ul>
+          <li>Dosa <span class="menu-price" data-dish="Dosa"></span></li>
+          <li>Iddli <span class="menu-price" data-dish="Iddli"></span></li>
+          <li>Medu Vadas <span class="menu-price" data-dish="Medu Vadas"></span></li>
+        </ul>
+      </div>
+      <div class="menu-category">
+        <h3>Punjabi</h3>
+        <ul>
+          <li>Chole Bhature <span class="menu-price" data-dish="Chole Bhature"></span></li>
+          <li>Butter Chicken <span class="menu-price" data-dish="Butter Chicken"></span></li>
+          <li>Chicken Tikka Masala <span class="menu-price" data-dish="Chicken Tikka Masala"></span></li>
+          <li>Mutton Masala <span class="menu-price" data-dish="Mutton Masala"></span></li>
+        </ul>
+      </div>
+      <div class="menu-category">
+        <h3>Bengali</h3>
+        <ul>
+          <li>Fish Fry <span class="menu-price" data-dish="Fish Fry"></span></li>
+          <li>Bread Rasmalai <span class="menu-price" data-dish="Bread Rasmalai"></span></li>
+          <li>Lassi <span class="menu-price" data-dish="Lassi"></span></li>
+        </ul>
+      </div>
+    </section>
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Order Your Favorite Dish</h2>
+            <form id="orderForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}">
+                <label for="dish">Dish:</label>
+                <select id="dish" name="dish" required>
+                    <option value="">Select a dish</option>
+                    <option>Lassi</option>
+                    <option>Chicken Tikka Masala</option>
+                    <option>Chole Bhature</option>
+                    <option>Fish Fry</option>
+                    <option>Iddli</option>
+                    <option>Butter Chicken</option>
+                    <option>Medu Vadas</option>
+                    <option>Mutton Masala</option>
+                    <option>Bread Rasmalai</option>
+                    <option>Dosa</option>
+                </select>
+                <span id="dishPriceDisplay" style="display:block;margin-bottom:0.5rem;color:#e94560;font-weight:600;"></span>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" name="quantity" min="1" max="20" value="1" required>
+                <button type="submit">Place Order</button>
+            </form>
+            <div id="orderSuccess" class="order-success">Thank you for your order! We will contact you soon.</div>
+        </div>
+    </div>
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeAdminModal">&times;</span>
+            <h2>All Orders</h2>
+            <button id="setPricesBtn" style="margin-bottom:1rem;">Set Prices</button>
+            <div id="allOrdersList"></div>
+        </div>
+    </div>
+    <div id="setPricesModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeSetPricesModal">&times;</span>
+            <h2>Set Dish Prices</h2>
+            <form id="setPricesForm"></form>
+            <button id="savePricesBtn" style="margin-top:1rem;">Save Prices</button>
+        </div>
+    </div>
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeCartModal">&times;</span>
+            <h2>All Current Orders</h2>
+            <div id="cartOrdersList"></div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
